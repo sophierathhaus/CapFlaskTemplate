@@ -1,0 +1,30 @@
+/*
+body{
+   background:url(https://images.unsplash.com/photo-1601890202160-c989f4037d6b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjR8fHB1cHB5fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60); 
+}
+*/
+/*div{
+    background:blue;
+    border: orange 10px dotted;
+}
+
+p{
+    color:yellow;
+}
+
+span{
+    background:red;
+    color:black;
+}
+*/
+
+.firstdiv{
+    color:blue;
+}
+.seconddiv{
+    background-color: grey;
+}
+
+#singledout{
+    color:red;
+}
