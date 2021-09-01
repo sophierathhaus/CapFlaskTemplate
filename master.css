@@ -18,7 +18,7 @@ span{
 }
 */
 
-.firstdiv{
+/*.firstdiv{
     color:blue;
 }
 .seconddiv{
@@ -27,4 +27,12 @@ span{
 
 #singledout{
     color:red;
+}*/
+
+h1{
+  font-family: monospace;  
+}
+
+p{
+    font-family: cursive;   
 }
