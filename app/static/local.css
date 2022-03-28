@@ -1,3 +1,31 @@
 .bottom-image img{
     vertical-align:bottom;
     }
+.index{
+    font-family: monospace;
+    background-color: lavenderblush;
+    }
+.navbar{
+    font-family: monospace;
+    }
+.post{
+    font-family: monospace;
+    }
+h1{
+    font-family: monospace;
+    }
+h3{
+    font-family: monospace;
+    }
+h6{
+    font-family: monospace;
+    }
+p{
+    font-family: monospace;
+    }
+ul{
+    font-family: monospace;
+}
+.container{
+    font-family: monospace;
+}
