@@ -14,6 +14,7 @@ from .mail import send_email
 # This function is called by other functions to load the current user in to memory
 @login.user_loader
 def load_user(id):
+    print('loading user')
     try:
         return User.objects.get(pk=id)
     except mongoengine.errors.DoesNotExist:
@@ -22,6 +23,8 @@ def load_user(id):
 
 # This is the route that a user uses to login
 @app.route('/login', methods=['GET', 'POST'])
+@app.route('/login', methods=['GET', 'DONATION'])
+
 def login():
     # this if statement can be really useful to see if the user that is requesting this
     # page is currently loggedin 

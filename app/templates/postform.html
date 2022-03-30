@@ -22,6 +22,14 @@
                 {% endfor %}
             </p>
             <p>
+                {{ form.review.label }} <br>
+                {{ form.review()}}
+                <!--List the errors for this field-->
+                {% for error in form.review.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
                 {{form.submit()}}
             </p>
         </form>

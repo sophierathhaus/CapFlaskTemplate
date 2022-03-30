@@ -13,19 +13,19 @@ from wtforms import PasswordField, StringField, SubmitField, validators, TextAre
 from app.classes.data import User
 
 class LoginForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired()])
-    password = PasswordField('Password', validators=[DataRequired()])
-    remember_me = BooleanField('Remember Me?')
+    username = StringField('username', validators=[DataRequired()])
+    password = PasswordField('password', validators=[DataRequired()])
+    remember_me = BooleanField('remember me?')
     submit = SubmitField()
 
 class RegistrationForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired()])
-    email = StringField('Email', validators=[DataRequired(), Email()])  
-    fname = StringField('First Name', validators=[DataRequired()])
-    lname = StringField('Last Name', validators=[DataRequired()])
-    password = PasswordField('Password', validators=[DataRequired()])
-    password2 = PasswordField('Repeat Password', validators=[DataRequired(), EqualTo('password')])
-    submit = SubmitField('Register')
+    username = StringField('username', validators=[DataRequired()])
+    email = StringField('email', validators=[DataRequired(), Email()])  
+    fname = StringField('first name', validators=[DataRequired()])
+    lname = StringField('last name', validators=[DataRequired()])
+    password = PasswordField('password', validators=[DataRequired()])
+    password2 = PasswordField('repeat password', validators=[DataRequired(), EqualTo('password')])
+    submit = SubmitField('register')
 
     def validate_username(self, username):
         try:
@@ -33,7 +33,7 @@ class RegistrationForm(FlaskForm):
         except mongoengine.errors.DoesNotExist:
             flash(f"{username.data} is available.")
         else:
-            raise ValidationError('This username is taken.')
+            raise ValidationError('this username is taken.')
 
     def validate_email(self, email):
         try:
@@ -41,29 +41,31 @@ class RegistrationForm(FlaskForm):
         except mongoengine.errors.DoesNotExist:
             flash(f'{email.data} is a unique email address.')
         else:
-            raise ValidationError('This email address is already in use. if you have forgotten your credentials you can try to recover your account.')
+            raise ValidationError('this email address is already in use. if you have forgotten your credentials you can try to recover your account.')
 
 class ResetPasswordRequestForm(FlaskForm):
-    email = StringField('Email', validators=[DataRequired(), Email()])
-    submit = SubmitField('Request Password Reset')
+    email = StringField('email', validators=[DataRequired(), Email()])
+    submit = SubmitField('request password reset')
 
 class ResetPasswordForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     password2 = PasswordField(
-        'Repeat Password', validators=[DataRequired(), EqualTo('password')])
-    submit = SubmitField('Request Password Reset')
+        'repeat password', validators=[DataRequired(), EqualTo('password')])
+    submit = SubmitField('request password reset')
 
 class ProfileForm(FlaskForm):
-    fname = StringField('First Name', validators=[DataRequired()])
-    lname = StringField('Last Name', validators=[DataRequired()]) 
-    image = FileField("Image") 
-    submit = SubmitField('Post')
+    fname = StringField('first name', validators=[DataRequired()])
+    lname = StringField('last name', validators=[DataRequired()]) 
+    role = SelectField('role',choices=[("creator","creator"),("learner","learner")])
+    image = FileField("image") 
+    submit = SubmitField('post')
 
 class PostForm(FlaskForm):
-    subject = StringField('Subject', validators=[DataRequired()])
-    content = TextAreaField('Post', validators=[DataRequired()])
-    submit = SubmitField('Post')
+    subject = StringField('subject', validators=[DataRequired()])
+    content = TextAreaField('post', validators=[DataRequired()])
+    submit = SubmitField('post')
+    review = SelectField('review',choices=[("1 star","1 star"),("2 stars","2 stars"), ("3 stars", "3 stars")])
 
 class CommentForm(FlaskForm):
-    content = TextAreaField('Comment', validators=[DataRequired()])
-    submit = SubmitField('Comment')
+    content = TextAreaField('comment', )
+    submit = SubmitField('comment')

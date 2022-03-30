@@ -5,14 +5,14 @@
         {% for field in form.errors %}
             {% for error in form.errors[field] %}
                 <div class="alert alert-error">
-                    <strong>Error!</strong>{{field}}: {{error}}
+                    <strong>error!</strong>{{field}}: {{error}}
                 </div>
             {% endfor %}
         {% endfor %}
 
         <h1 class="display-5">{{post.subject}}</h1>
         {{post.content}} <br>
-        <h1 class="display-5">New Comment</h1>
+        <h1 class="display-5">new comment</h1>
 
         <form method=post>
             {{ form.hidden_tag() }}
