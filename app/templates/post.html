@@ -10,10 +10,10 @@
 {% endif %}
 <br>
     {% if post.author == current_user %}
-        <a data-toggle="tooltip" data-placement="top" title="Delete Post" href="/post/delete/{{post.id}}">
+        <a data-toggle="tooltip" data-placement="top" title="delete post" href="/post/delete/{{post.id}}">
             <img width="40" class="bottom-image" src="/static/delete.png">
         </a>
-        <a data-toggle="tooltip" data-placement="top" title="Edit Post" href="/post/edit/{{post.id}}">
+        <a data-toggle="tooltip" data-placement="top" title="edit post" href="/post/edit/{{post.id}}">
             <img width="40" class="bottom-image" src="/static/edit.png">
         </a>
     {% endif %}
@@ -25,11 +25,11 @@
         {% endif %}
         {{post.content}}
     </p>
-    <a href="/comment/new/{{post.id}}" class="btn btn-primary btn-sm" role="button">New Comment</a>
+    <a href="/comment/new/{{post.id}}" class="btn btn-primary btn-sm" role="button">new comment</a>
 
     <div class="ms-5">
     {% if comments %}
-    <h1 class="display-5">Comments</h1>
+    <h1 class="display-5">comments</h1>
     {% for comment in comments %}
         {% if current_user == comment.author %}
             <a href="/comment/delete/{{comment.id}}"><img width="20" src="/static/delete.png"></a> 
@@ -45,11 +45,11 @@
         </p>
     {% endfor %}
     {% else %}
-        <h1 class="display-5">No Comments</h1>
+        <h1 class="display-5">no comments</h1>
     {% endif %}
     </div>
 {% else %}
-    <h1 class="display-5">No Post</h1>
+    <h1 class="display-5">no posts</h1>
 {% endif %}
 
 {% endblock %}

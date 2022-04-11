@@ -49,6 +49,7 @@ class Post(Document):
     content = StringField()
     createdate = DateTimeField(default=dt.datetime.utcnow)
     modifydate = DateTimeField()
+    review = StringField()
 
     meta = {
         'ordering': ['-createdate']
@@ -66,3 +67,8 @@ class Comment(Document):
     meta = {
         'ordering': ['-createdate']
     }
+
+
+role =  StringField()
+
+Rating =  StringField()

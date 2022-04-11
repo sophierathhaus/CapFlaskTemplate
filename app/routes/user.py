@@ -55,3 +55,4 @@ def profileEdit():
     form.role.data = current_user.role
 
     return render_template('profileform.html', form=form)
+
