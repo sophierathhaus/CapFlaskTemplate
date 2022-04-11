@@ -13,3 +13,10 @@ def aboutus():
 @app.route('/posts')
 def posts():
     return render_template('posts.html')
+@app.route('/game')
+def game():
+    return render_template('game.html')
+
+@app.route('/aboutsite')
+def aboutsite():
+    return render_template('aboutsite.html')

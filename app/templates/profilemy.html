@@ -2,7 +2,7 @@
 
 {% block body %}
 <h1 class="display-1">
-    My Profile
+    my profile
     <a href="/myprofile/edit">
         <img width="40" src="/static/edit.png">
     </a>
@@ -18,16 +18,20 @@
     </div>
     <div class="col display-5">
         {% if current_user.fname and current_user.lname %}
-            Real Name: {{current_user.fname}}  {{current_user.lname}} <br>
+            real name: {{current_user.fname}}  {{current_user.lname}} <br>
         {% endif %}
         
         Username: {{current_user.username}} <br>
         Email: {{current_user.email}} <br>
         Role: {{current_user.role}} <br>
     </div>
+        username: {{current_user.username}} <br>
+        email: {{current_user.email}}<br>
+        role: {{current_user.role}}
+
+    </div>   
 </div>
 <br>
-
 
 
 {% endblock %}
