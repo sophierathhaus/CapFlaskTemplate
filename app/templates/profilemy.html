@@ -8,7 +8,6 @@
     </a>
 </h1>
 
-
 <div class="row">
     <div class="col-2">
         {% if current_user.image %}
@@ -22,6 +21,10 @@
             real name: {{current_user.fname}}  {{current_user.lname}} <br>
         {% endif %}
         
+        Username: {{current_user.username}} <br>
+        Role: {{current_user.role}} <br>
+        Email: {{current_user.email}}
+    </div>
         username: {{current_user.username}} <br>
         email: {{current_user.email}}<br>
         role: {{current_user.role}}
@@ -29,6 +32,9 @@
     </div>   
 </div>
 <br>
+
+
+
 
 
 {% endblock %}

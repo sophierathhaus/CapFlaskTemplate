@@ -10,6 +10,9 @@ def index():
 def aboutus():
     return render_template('aboutus.html')
 
+@app.route('/posts')
+def posts():
+    return render_template('posts.html')
 @app.route('/game')
 def game():
     return render_template('game.html')
