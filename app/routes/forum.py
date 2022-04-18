@@ -98,7 +98,7 @@ def postNew():
             subject = form.subject.data,
             content = form.content.data,
             author = current_user.id,
-            review = form.subject.data,
+            review = form.review.data,
             # This sets the modifydate to the current datetime.
             modifydate = dt.datetime.utcnow
         )
