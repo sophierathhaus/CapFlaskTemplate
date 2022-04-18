@@ -20,6 +20,8 @@ def myProfile():
 # This is the route for editing a profile
 # the methods part is required if you are using a form 
 @app.route('/myprofile/edit', methods=['GET','POST'])
+
+
 # This requires the user to be loggedin
 @login_required
 # This is the function that goes with the route
@@ -53,3 +55,4 @@ def profileEdit():
     form.role.data = current_user.role
 
     return render_template('profileform.html', form=form)
+
