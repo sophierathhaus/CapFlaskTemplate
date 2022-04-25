@@ -3,6 +3,7 @@
 # like IntField, StringField etc.  This uses the Mongoengine Python Library. When you interact with the 
 # data you are creating an onject that is an instance of the class.
 
+from turtle import title
 from app import app
 from flask import flash
 from flask_login import UserMixin
@@ -43,6 +44,14 @@ class User(UserMixin, Document):
             return
         return User.objects.get(pk=id)
 
+class StoryPage(Document):
+    author = ReferenceField('User',reverse_delete_rule=CASCADE) 
+    title = StringField('Title')
+    content = StringField('Content')
+    image = FileField('Image')
+    c1 = ReferenceField('Page')
+    c2 = ReferenceField('Page') 
+
 class Post(Document):
     author = ReferenceField('User',reverse_delete_rule=CASCADE) 
     subject = StringField()
@@ -68,7 +77,3 @@ class Comment(Document):
         'ordering': ['-createdate']
     }
 
-
-role =  StringField()
-
-Rating =  StringField()

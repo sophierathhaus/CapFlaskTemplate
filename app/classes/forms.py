@@ -61,6 +61,14 @@ class ProfileForm(FlaskForm):
     image = FileField("image") 
     submit = SubmitField('post')
 
+class StoryPageForm(FlaskForm):
+    title = StringField('Title')
+    content = TextAreaField('Content')
+    image = FileField('Image')
+    c1 = SelectField("Choice 1", choices=[], validate_choice=False)
+    c2 = SelectField("Choice 2", choices=[], validate_choice=False)
+    submit = SubmitField('submit')
+
 class PostForm(FlaskForm):
     subject = StringField('subject', validators=[DataRequired()])
     content = TextAreaField('post', validators=[DataRequired()])
