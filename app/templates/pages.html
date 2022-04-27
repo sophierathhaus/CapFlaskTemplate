@@ -1,0 +1,13 @@
+<!-- This is a blank template.  You can copy this to make a new template page. -->
+
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% for page in pages %}
+    <a href="/page/delete/{{page.id}}">Del</a> | 
+    <a href="/page/edit/{{page.id}}">Edit</a> | 
+    <a href="/page/{{page.id}}">{{page.title}}</a> <br>
+{% endfor %}
+
+{% endblock %}

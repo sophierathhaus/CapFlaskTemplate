@@ -8,6 +8,7 @@ from flask_login import current_user
 from app.classes.data import StoryPage
 from app.classes.forms import StoryPageForm
 from flask_login import login_required
+from bson.objectid import ObjectId
 import datetime as dt
 
 def getPages():
@@ -23,7 +24,6 @@ def pageNew():
     form = StoryPageForm()
 
     if form.validate_on_submit():
-        print(form.title.data)
         newPage = StoryPage(
             author = current_user.id,
             title = form.title.data,
@@ -44,3 +44,53 @@ def pageNew():
     form.c1.choices = pageChoices
     form.c2.choices = pageChoices
     return render_template('pageform.html', form=form)
+
+@app.route('/page/edit/<pageID>', methods=['GET','POST'])
+@login_required
+def pageEdit(pageID):
+    form = StoryPageForm()
+    editPage = StoryPage.objects.get(pk=pageID)
+
+    if form.validate_on_submit():
+        editPage.update(
+            title = form.title.data,
+            content = form.content.data,
+            c1 = ObjectId(form.c1.data),
+            c2 = ObjectId(form.c2.data)
+        )
+        if form.image.data:
+            if editPage.image:
+                editPage.image.delete()
+            editPage.image.put(form.image.data, content_type = 'image/jpeg')
+            editPage.save()
+
+        return redirect(url_for('page', pageID = editPage.id))
+
+    pageChoices = getPages()
+    form.c1.choices = pageChoices
+    form.c2.choices = pageChoices
+    form.c1.default = editPage.c1.id
+    form.c2.default = editPage.c2.id
+    form.process()
+    form.title.data = editPage.title
+    form.content.data = editPage.content
+    
+    return render_template('pageform.html', form=form, page = editPage)
+
+
+@app.route('/page/<pageID>')
+def page(pageID):
+    thisPage = StoryPage.objects.get(pk=pageID)
+    return render_template('page.html',page=thisPage)
+
+@app.route('/pages')
+def pages():
+    pages=StoryPage.objects()
+    return render_template('pages.html',pages=pages)
+
+@app.route('/page/delete/<pageID>')
+def pageDelete(pageID):
+    deletePage = StoryPage.objects.get(pk=pageID)
+    deletePage.delete()
+    flash('Page was deleted')
+    return redirect(url_for('pages'))

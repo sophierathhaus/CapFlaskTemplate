@@ -46,11 +46,11 @@ class User(UserMixin, Document):
 
 class StoryPage(Document):
     author = ReferenceField('User',reverse_delete_rule=CASCADE) 
-    title = StringField('Title')
-    content = StringField('Content')
-    image = FileField('Image')
-    c1 = ReferenceField('Page')
-    c2 = ReferenceField('Page') 
+    title = StringField()
+    content = StringField()
+    image = FileField()
+    c1 = ReferenceField('StoryPage')
+    c2 = ReferenceField('StoryPage') 
 
 class Post(Document):
     author = ReferenceField('User',reverse_delete_rule=CASCADE) 

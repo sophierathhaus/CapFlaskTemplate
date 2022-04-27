@@ -15,7 +15,7 @@ copy this one and then edit it. -->
             {% endfor %}
         {% endfor %}
 
-        <form method=post>
+        <form method="post" enctype="multipart/form-data">
             {{ form.hidden_tag() }}
             
             {{ form.title.label }} <br>
@@ -25,9 +25,16 @@ copy this one and then edit it. -->
                 <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
             <br>
-
-            {{ form.image.label }} <br>
-            {{ form.image() }}
+            {% if page.image %}
+                <img width="200" class="img-thumbnail img-fluid" src="data:image;base64,{{base64encode(page.image.read())}}"> <br>
+                Change this image? <br>
+                {{ form.image() }}
+            {% else %}
+                {{ form.image.label }} <br>
+                {{ form.image() }}
+            {% endif %} <br>
+            
+            
             <!--List the errors for this field-->
             {% for error in form.image.errors %}
                 <span style="color: red;">[{{ error }}]</span>
