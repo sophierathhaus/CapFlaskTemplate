@@ -43,7 +43,7 @@ def pageNew():
     pageChoices = getPages()
     form.c1.choices = pageChoices
     form.c2.choices = pageChoices
-    return render_template('pageform.html', form=form)
+    return render_template('pageform.html', form=form, page=None)
 
 @app.route('/page/edit/<pageID>', methods=['GET','POST'])
 @login_required
