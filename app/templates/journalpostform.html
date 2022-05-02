@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block body %}
+        <h1></h1>
+
+        <form method=journalpost>
+            {{ journalform.hidden_tag() }}
+            <p>
+                {{ journalform.subject.label }} <br>
+                {{ journalform.subject(size=64) }}
+                <!--List the errors for this field-->
+                {% for error in journalform.subject.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ journalform.content.label }} <br>
+                {{ journalform.content(cols=64, rows=10) }}
+                <!--List the errors for this field-->
+                {% for error in journalform.content.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{journalform.submit()}}
+            </p>
+        </form>
+        
+{% endblock %}
