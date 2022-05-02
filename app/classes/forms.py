@@ -50,8 +50,7 @@ class ResetPasswordRequestForm(FlaskForm):
 
 class ResetPasswordForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
-    password2 = PasswordField(
-        'repeat password', validators=[DataRequired(), EqualTo('password')])
+    password2 = PasswordField('repeat password', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('request password reset')
 
 class ProfileForm(FlaskForm):
@@ -60,6 +59,14 @@ class ProfileForm(FlaskForm):
     role = SelectField('role',choices=[("creator","creator"),("learner","learner")])
     image = FileField("image") 
     submit = SubmitField('post')
+
+class StoryPageForm(FlaskForm):
+    title = StringField('Title')
+    content = TextAreaField('Content')
+    image = FileField('Image')
+    c1 = SelectField("Choice 1", choices=[], validate_choice=False)
+    c2 = SelectField("Choice 2", choices=[], validate_choice=False)
+    submit = SubmitField('submit')
 
 class PostForm(FlaskForm):
     subject = StringField('subject', validators=[DataRequired()])
