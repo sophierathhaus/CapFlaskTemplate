@@ -8,6 +8,7 @@
 {% if post.modifydate %}
     modified {{moment(post.modifydate).calendar()}}
 {% endif %}
+<body style="background-color:rgb(218, 224, 191)"></body>
 <br>
     {% if post.author == current_user %}
         <a data-toggle="tooltip" data-placement="top" title="delete post" href="/post/delete/{{post.id}}">
@@ -52,6 +53,7 @@
     </div>
 {% else %}
     <h1 class="display-5">no posts</h1>
+</body>
 {% endif %}
 
 {% endblock %}
