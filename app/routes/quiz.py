@@ -2,7 +2,7 @@
 # a forum where a posts and comments on those posts can be
 # Created, Read, Updated or Deleted (CRUD)
 
-from django.shortcuts import render
+#from django.shortcuts import render
 from app import app, login
 import mongoengine.errors
 from flask import render_template, flash, redirect, url_for
