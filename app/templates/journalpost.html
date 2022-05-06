@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% if post %}
+
+{{moment(journalpost.createdate).calendar()}} by {{journalpost.author.username}} 
+{% if post.modifydate %}
+    modified {{moment(journalpost.modifydate).calendar()}}
+{% endif %}
+<br>
+    {% if journalpost.author == current_user %}
+        <a data-toggle="tooltip" data-placement="top" title="delete journal post" href="/journalpost/delete/{{journalpost.id}}">
+            <img width="40" class="bottom-image" src="/static/delete.png">
+        </a>
+        <a data-toggle="tooltip" data-placement="top" title="edit journalpost" href="/journalpost/edit/{{journalpost.id}}">
+            <img width="40" class="bottom-image" src="/static/edit.png">
+        </a>
+    {% endif %}
+
+    <h1 class="display-5">{{journalpost.subject}}</h1>
+    <p class="fs-3 text-break">
+        {% if journalpost.author.image %}
+        <img width="120" class="img-thumbnail float-start me-2" src="data:image;base64,{{base64encode(journalpost.author.image.read())}}">
+        {% endif %}
+    </p>
+    
+    <a href="/journalcomment/new/{{journalpost.id}}" class="btn btn-primary btn-sm" role="button">new journal comment</a>
+
+    <div class="ms-5">
+    {% if journalcomments %}
+    <h1 class="display-5">journalcomments</h1>
+    {% for journalcomment in journalcomments %}
+        {% if current_user == journalcomment.author %}
+            <a href="/journalcomment/delete/{{comment.id}}"><img width="20" src="/static/delete.png"></a> 
+            <a href="/journalcomment/edit/{{comment.id}}"><img width="20" src="/static/edit.png"></a>
+        {% endif %}
+        {{moment(journalcomment.createdate).calendar()}} {{journalcomment.author.username}} 
+        {% if journalcomment.modifydate %}
+            modified {{moment(journalcomment.modifydate).calendar()}}
+        {% endif %}
+        <br>
+        <p class="fs-3">
+            {{journalcomment.content}}
+        </p>
+    {% endfor %}
+    {% else %}
+        <h1 class="display-5">no journalcomments</h1>
+    {% endif %}
+    </div>
+{% else %}
+    <h1 class="display-5">no posts</h1>
+{% endif %}
+
+{% endblock %}
