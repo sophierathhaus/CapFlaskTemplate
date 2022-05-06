@@ -88,6 +88,12 @@ def pages():
     pages=StoryPage.objects()
     return render_template('pages.html',pages=pages)
 
+@app.route('/page/start')
+def startPage():
+    thisPage = StoryPage.objects.get(pk='6269746f15559196d7dc660d')
+    return render_template('page.html',page=thisPage)
+
+
 @app.route('/page/delete/<pageID>')
 def pageDelete(pageID):
     deletePage = StoryPage.objects.get(pk=pageID)
