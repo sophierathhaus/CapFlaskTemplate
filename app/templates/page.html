@@ -1,0 +1,36 @@
+<!-- This is a blank template.  You can copy this to make a new template page. -->
+
+{% extends 'base.html' %}
+
+{% block body %}
+
+<a href="/page/delete/{{page.id}}">Delete</a> | <a href="/page/edit/{{page.id}}">Edit</a>
+<br> <br>
+
+Author: {{page.author.username}} <br>
+{{page.title}} <br>
+{{page.content}} <br>
+{% if page.image %}
+    <img width="200" class="img-thumbnail img-fluid" src="data:image;base64,{{base64encode(page.image.read())}}"> <br>
+{% endif %} <br>
+Choice 1: 
+{% if page.c1 %}
+<a href="/page/{{page.c1.id}}">{{page.c1.title}}</a> <br>
+{% if page.c1.image %}
+    <img width="200" class="img-thumbnail img-fluid" src="data:image;base64,{{base64encode(page.c1.image.read())}}"> <br>
+{% endif %}
+{% else %}
+No Choice 1 yet
+{% endif %}
+<br>
+Choice 2: 
+{% if page.c2 %}
+<a href="/page/{{page.c2.id}}">{{page.c2.title}}</a> <br>
+{% if page.c2.image %}
+    <img width="200" class="img-thumbnail img-fluid" src="data:image;base64,{{base64encode(page.c2.image.read())}}"> <br>
+{% endif %}
+{% else %}
+No Choice 2 yet
+{% endif %}
+
+{% endblock %}

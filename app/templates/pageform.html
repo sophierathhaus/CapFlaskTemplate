@@ -1,0 +1,68 @@
+<!-- this is a generic form page.  Best way to make a new form page is to 
+copy this one and then edit it. -->
+
+
+{% extends "base.html" %}
+
+{% block body %}
+        <h1>form page title</h1>
+
+        <!--List all errors in a group at the top-->
+        {% for field in form.errors %}
+            {% for error in form.errors[field] %}
+                <div class="alert alert-error">
+                    <strong>Error!</strong>{{field}}: {{error}}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+        <form method="post" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            
+            {{ form.title.label }} <br>
+            {{ form.title(size=64) }}
+            <!--List the errors for this field-->
+            {% for error in form.title.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+            <br>
+            {% if page.image %}
+                <img width="200" class="img-thumbnail img-fluid" src="data:image;base64,{{base64encode(page.image.read())}}"> <br>
+                Change this image? <br>
+                {{ form.image() }}
+            {% else %}
+                {{ form.image.label }} <br>
+                {{ form.image() }}
+            {% endif %} <br>
+            
+            
+            <!--List the errors for this field-->
+            {% for error in form.image.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+            <br>
+            {{ form.content.label }} <br>
+            {{ form.content() }}
+            <!--List the errors for this field-->
+            {% for error in form.content.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+            <br>
+            {{ form.c1.label }} <br>
+            {{ form.c1() }}
+            <!--List the errors for this field-->
+            {% for error in form.c1.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+            <br>
+            {{ form.c2.label }} <br>
+            {{ form.c2() }}
+            <!--List the errors for this field-->
+            {% for error in form.c2.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+            <br>
+            {{form.submit()}}
+        </form>
+        
+{% endblock %}
