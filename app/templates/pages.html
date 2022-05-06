@@ -5,9 +5,11 @@
 {% block body %}
 
 {% for page in pages %}
+<body style="background-color:azure">
     <a href="/page/delete/{{page.id}}">Del</a> | 
     <a href="/page/edit/{{page.id}}">Edit</a> | 
     <a href="/page/{{page.id}}">{{page.title}}</a> <br>
+</body>
 {% endfor %}
 
 {% endblock %}
