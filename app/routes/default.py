@@ -22,9 +22,6 @@ def game():
 def aboutsite():
     return render_template('aboutsite.html')
 
-@app.route('/journalposts')
-def journalposts():
-    return render_template('journalposts.html')
 
 
 
