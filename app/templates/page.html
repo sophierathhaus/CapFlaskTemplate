@@ -3,6 +3,7 @@
 {% extends 'base.html' %}
 
 {% block body %}
+<div class="container" style="background-color: rgb(218, 224, 191);">
 
 <a href="/page/delete/{{page.id}}">Delete</a> | <a href="/page/edit/{{page.id}}">Edit</a>
 <br> <br>
@@ -32,5 +33,5 @@ Choice 2:
 {% else %}
 No Choice 2 yet
 {% endif %}
-
+</div>
 {% endblock %}
