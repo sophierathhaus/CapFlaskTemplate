@@ -23,5 +23,29 @@ def aboutsite():
     return render_template('aboutsite.html')
 
 
+@app.route('/mentalhealth')
+def mentalhealth():
+    return render_template('mentalhealth.html')
+
+    
+@app.route('/surveypage')
+def surveypage():
+    return render_template('surveypage.html')
+
+
+@app.route('/reflection')
+def reflection():
+    return render_template('reflection.html')
+
+
+@app.route('/result')
+def result():
+    return render_template('result.html')
+
+    
+@app.route('/result2')
+def result2():
+    return render_template('result2.html')
+
 
 
